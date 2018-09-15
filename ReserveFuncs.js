@@ -29,7 +29,7 @@ if(!Date.prototype.adjustDate){
 	};
 };
 
-class GetDate {
+class Strings {
 	constructor(x, y) {
 		this.today = new Date();
 	}
@@ -38,66 +38,35 @@ class GetDate {
 		rand = Math.round(rand); 
 		return rand;
 	}
-	getToday() {
-		return this.today.getDate(); 
+	setNull(arg) {
+		return arg < 10 ? `0${arg}` : arg;
 	}
-	getBefore(x, y) {
-		return this.today.adjustDate(
-			- this.random(x, y)
-		);
-	}
-	getAfter(x, y) {
+	randomize(x, y) {
 		return this.today.adjustDate(
 			this.random(x, y)
 		);
 	}
+	getDays(x, y) {
+		let date = this.randomize(x, y);
+		let day = this.setNull(date.getDate());
+		let month = this.setNull(date.getMonth() + 1);
+		let year = date.getFullYear();
+		return `${day}:${month}:${year}`;
+	}
 };
 
-class Strings extends GetDate {
-	beforeDay(x, y) {
-		let day = super.getBefore(x, y).getDate();
-		if(day < 10) {
-			day = `0${day}`;
-		}
-		return day;
-	}
-	beforeMonth() {
-		let month = super.getBefore().getMonth() + 1;
-		if(month < 10) {
-			month = `0${month}`;
-		}
-		return month;
-	}	 
-	
-	afterDay(x, y) {
-		let day = super.getAfter(x, y).getDate();
-		if(day < 10) {
-			day = `0${day}`;
-		}
-		return day;
-	}
-	afterMonth() {
-		let month = super.getAfter().getMonth() + 1;
-		if(month < 10) {
-			month = `0${month}`;
-		}
-		return month;
-	}
-	beforeString(x, y) {
-		return `${this.beforeDay(x, y)}:${this.beforeMonth()}:${super.getBefore().getFullYear()}`
-	}
-	afterString(x, y) {
-		return `${this.afterDay(x, y)}:${this.afterMonth()}:${super.getBefore().getFullYear()}`
-	}
-}
 
 /** 
 Отрефакторить обязательно!
 
 API
 
+0. Подключаем либу;
 1. Создаем объект new Strings;
-1.2. Методы beforeString и afterString принимает два числа, где первое - начало интервала случайного разброса дат, а второе - конец. 
-1.3. Вставляем нужные методы в элементы.
+1.2. Метод getDays устанавливает разброс случайных значений для дат:
+    -  случайная дата в прошлом? Передаем в аргументы два положительных числа - минимальное и максимальное.
+    -  в будущем? Передаем отрицательные числа. Абсолютное значение первого должно быть больше второго!
+    -  нужна текущая дата? Вызываем без аргументов. 
+1.3. Вставляем метод в элементы.
 
 */
