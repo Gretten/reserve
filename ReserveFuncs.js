@@ -13,6 +13,8 @@ API
 
 */
 
+// Блок модификации Date
+
 if(!Date.prototype.adjustDate){
 	Date.prototype.adjustDate = function(days){
 		var date;
@@ -42,6 +44,8 @@ if(!Date.prototype.adjustDate){
 		return this;
 	};
 };
+
+// Блок строк 
 
 class Strings {
 	constructor() {
