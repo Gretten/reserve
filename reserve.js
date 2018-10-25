@@ -45,7 +45,7 @@ if (!Date.prototype.adjustDate) {
     };
 };
 
-// Блок строк 
+// Создаем даты
 
 class Strings {
     constructor() {
@@ -72,3 +72,16 @@ class Strings {
         return `${day}.${month}.${year}`;
     }
 };
+
+// Геолокация.
+// Вставить в HTML: <script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
+
+class Cities {
+    constructor() {
+        this.ymaps = YMaps;
+    }
+    getCity() {
+        let city = this.ymaps.location.city;
+        return city;
+    }
+}
