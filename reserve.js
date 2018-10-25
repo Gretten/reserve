@@ -65,8 +65,8 @@ class Strings {
         );
     }
     symbolic() {
-        let months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-        return months;
+        this.months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+        return this.months;
     }
     getDaysNumberic(x, y) {
         let date = this.randomize(x, y);
@@ -78,9 +78,9 @@ class Strings {
     getDaysCymbolic(x, y) {
         let date = this.randomize(x, y);
         let day = this.setNull(date.getDate());
-        let month = symbolic()[date.getMonth()];
+        let month = this.symbolic()[date.getMonth()];
         let year = date.getFullYear();
-        return `${day}.${month}.${year}`;
+        return `${day} ${month} ${year}`;
     }
 };
 
