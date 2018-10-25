@@ -64,10 +64,21 @@ class Strings {
             this.random(x, y)
         );
     }
-    getDays(x, y) {
+    symbolic() {
+        let months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+        return months;
+    }
+    getDaysNumberic(x, y) {
         let date = this.randomize(x, y);
         let day = this.setNull(date.getDate());
         let month = this.setNull(date.getMonth() + 1);
+        let year = date.getFullYear();
+        return `${day}.${month}.${year}`;
+    }
+    getDaysCymbolic(x, y) {
+        let date = this.randomize(x, y);
+        let day = this.setNull(date.getDate());
+        let month = symbolic()[date.getMonth()];
         let year = date.getFullYear();
         return `${day}.${month}.${year}`;
     }
