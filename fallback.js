@@ -1,3 +1,20 @@
+/*
+Первый блок - со stack.overflow, модифицирует объект Date, чтобы выдавал корректные даты после пороговых (0, 31).
+
+API
+
+0. Подключаем либу;
+1. Создаем объект new Strings;
+1.2. Метод getDays устанавливает разброс случайных значений для дат:
+    -  случайная дата в прошлом? Передаем в аргументы два положительных числа - минимальное и максимальное.
+    -  в будущем? Передаем отрицательные числа. Абсолютное значение первого должно быть больше второго!
+    -  нужна текущая дата? Вызываем без аргументов. 
+1.3. Вставляем метод в элементы.
+
+*/
+
+// Блок модификации Date
+
 if (!Date.prototype.adjustDate) {
     Date.prototype.adjustDate = function (days) {
         var date;
@@ -71,4 +88,17 @@ String.prototype.getDays = function (x, y, symb) {
         month = this.setNull(date.getMonth() + 1);
     }
     return day + '.' + month + '.' + year;
+}
+
+// Геолокация.
+// Вставить в HTML: <script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
+
+
+var Cities = function() {
+    this.ymaps = YMaps;
+}
+
+Cities.prototype.getCity = function() {
+    var city = this.ymaps.location.city;
+    return city;
 }
