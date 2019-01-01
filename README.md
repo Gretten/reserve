@@ -5,4 +5,4 @@ It can easily provide:
 - timers (in process);
 - event listeners (in process).
 
-Do not use this library because of critical bug thich I do not have time to fix.
+Do not use this library because of critical bug which I do not have time to fix.
